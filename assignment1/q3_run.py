@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-
 import random
 import numpy as np
 from utils.treebank import StanfordSentiment
 import matplotlib
 matplotlib.use('agg')
+import pdb; pdb.set_trace()
 import matplotlib.pyplot as plt
 import time
 

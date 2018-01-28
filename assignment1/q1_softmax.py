@@ -27,7 +27,6 @@ def softmax(x):
     x -- You are allowed to modify x in-place
     """
     orig_shape = x.shape
-
     if len(x.shape) > 1:
         # Matrix
         maximums = np.max(x, axis=1)
@@ -82,10 +81,16 @@ def test_softmax():
     """
     print "Running your tests..."
     ### YOUR CODE HERE
-    raise NotImplementedError
+    test = softmax(np.array([[1001,1002],[3,4], [1,5]]))
+    print test
+    ans = np.array([
+        [0.26894142, 0.73105858],
+        [0.26894142, 0.73105858],
+        [0.01798620, 0.98201379]])
+    assert np.allclose(test, ans, rtol=1e-05, atol=1e-06)
     ### END YOUR CODE
 
 
 if __name__ == "__main__":
     test_softmax_basic()
-    # test_softmax()
+    test_softmax()
