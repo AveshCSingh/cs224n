@@ -97,6 +97,7 @@ def getNegativeSamples(target, dataset, K):
     return indices
 
 
+@profile
 def negSamplingCostAndGradient(predicted, target, outputVectors, dataset,
                                K=10):
     """ Negative sampling cost function for word2vec models
