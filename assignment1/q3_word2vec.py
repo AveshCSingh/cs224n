@@ -62,9 +62,9 @@ def softmaxCostAndGradient(predicted, target, outputVectors, dataset):
     assignment!
     """
     ### YOUR CODE HERE
-    outputVectors = np.matrix(outputVectors)
+    outputVectors = np.asmatrix(outputVectors)
     # We transpose predicted because it should be a column vector
-    predicted = np.matrix(predicted).transpose()
+    predicted = np.asmatrix(predicted).transpose()
     # y_hat is a column vector of softmax predictions, should have size w.
     y_hat = (softmax((outputVectors * predicted).transpose())).transpose()
     y = np.zeros_like(y_hat)
@@ -97,7 +97,7 @@ def getNegativeSamples(target, dataset, K):
     return indices
 
 
-@profile
+#@profile
 def negSamplingCostAndGradient(predicted, target, outputVectors, dataset,
                                K=10):
     """ Negative sampling cost function for word2vec models
@@ -118,9 +118,9 @@ def negSamplingCostAndGradient(predicted, target, outputVectors, dataset,
     indices.extend(getNegativeSamples(target, dataset, K))
 
     ### YOUR CODE HERE
-    outputVectors = np.matrix(outputVectors)
+    outputVectors = np.asmatrix(outputVectors)
     u_o = outputVectors[target]
-    predicted = np.matrix(predicted).transpose()
+    predicted = np.asmatrix(predicted).transpose()
     # Forward propagation
     cost_a = -1*np.log(sigmoid(u_o * predicted))[0,0]
     intermediate = np.log(sigmoid(-1*outputVectors[indices] * predicted))

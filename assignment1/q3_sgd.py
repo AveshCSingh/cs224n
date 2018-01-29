@@ -9,6 +9,8 @@ import numpy as np
 import os.path as op
 import cPickle as pickle
 
+from datetime import datetime
+
 
 def load_saved_params():
     """
@@ -95,7 +97,7 @@ def sgd(f, x0, step, iterations, postprocessing=None, useSaved=False,
                 expcost = cost
             else:
                 expcost = .95 * expcost + .05 * cost
-            print "iter %d: %f" % (iter, expcost)
+            print "iter %d: %f, time=%s" % (iter, expcost, str(datetime.now()))
 
         if iter % SAVE_PARAMS_EVERY == 0 and useSaved:
             save_params(iter, x)
